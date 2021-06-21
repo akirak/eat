@@ -106,6 +106,12 @@
            (rx (group (+? anything)) word-end)
            nil t))))
 
+(eat-def-thing eat-line
+  :description "line"
+  :region
+  (list (line-beginning-position)
+        (line-end-position)))
+
 ;;;; Commands
 
 (transient-define-prefix eat-edit ()
@@ -115,7 +121,8 @@
    ("t" eat-transport-action)]
   ["Thing"
    ("s" eat-symbol)
-   ("w" eat-word)])
+   ("w" eat-word)
+   ("l" eat-line)])
 
 (provide 'eat)
 ;;; eat.el ends here
